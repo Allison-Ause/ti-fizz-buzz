@@ -33,4 +33,4 @@ convertedArray = numbers.map((num) => {
   } else return num
   // if I don't return num, it will read Undefined
 })
-console.log(convertedArray)
+console.log(convertedArray.join(`/n`))
