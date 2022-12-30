@@ -19,11 +19,15 @@ function findOdd(A) {
   for (const [num, count] of Object.entries(repeats)) {
     console.log(`${num}, ${count}`)
     if (count % 2 != 0) {
-      solution = num
+      solution = Number(num)
     }
   }
   console.log('solution', solution)
   return solution
 }
+
+// XOR Operator (^) seems similar to the modulo
+
+const findOdd = (xs) => xs.reduce((a, b) => a ^ b)
 
 findOdd([2, 2, 1, 3, 3, 33, 42, 33, 1])
