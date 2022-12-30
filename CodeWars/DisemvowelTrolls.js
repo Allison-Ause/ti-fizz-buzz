@@ -46,6 +46,9 @@ disemvowel('This website is for losers LOL!')
 
 function disemvowel(str) {
   return (str || '').replace(/[aeiou]/gi, '')
+  // /termtobereplaced/gi means replace globally across the entire string.
+  // Array of vowels means anything that matches these.
+  // , '' means replace with empty string
 }
 
 // .FILTER
