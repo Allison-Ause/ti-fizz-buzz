@@ -15,9 +15,7 @@ function findOdd(A) {
   A.forEach((num) => {
     repeats[num] = (repeats[num] || 0) + 1
   })
-  console.log('repeatArr', repeats)
   for (const [num, count] of Object.entries(repeats)) {
-    console.log(`${num}, ${count}`)
     if (count % 2 != 0) {
       solution = Number(num)
     }
