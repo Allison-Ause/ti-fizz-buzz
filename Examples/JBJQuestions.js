@@ -28,26 +28,53 @@ const dogInfo = [
   ['Ryan Mehta', 'laptop charger', 35],
 ]
 
+// return object with single dogs and their cumulative prices
+
 function dogCost(dogInfo) {
-  // return an object
-  dogInfo.reduce((acc, curr) => {
-    // functionality here
-    let name = curr[0]
-    let price = curr[2]
-    if (acc.hasOwnProperty(name)) {
-      acc[name] += price
+  const dogsObject = dogInfo.reduce((acc, curr) => {
+    const dog = curr[0]
+    console.log('curr dog', dog)
+    // check for dog's existence in acc
+    console.log('exists in list?', acc.hasOwnProperty(dog))
+    if (acc.hasOwnProperty(dog)) {
+      // if exists, add acc price to curr price
+      console.log('acc[dog]', acc[dog])
+      // this should add the prices
+      acc[dog] += curr[2]
     } else {
-      acc = { ...acc, [name]: price }
+      // in order to make the key the value of the var, you must bracket
+      acc = { ...acc, [dog]: curr[2] }
+      console.log('acc in else', acc)
     }
-    console.log('acc', acc)
+
+    // if not, add dog and price
+
     return acc
   }, {})
-  // find all occurrences of dog
-  // tally the price for all
-  // put info into dog object
-  // return dog object
-  return dogInfo
+  console.log('dogsObject', dogsObject)
+  return dogsObject
 }
+
+// function dogCost(dogInfo) {
+//   // return an object
+//   dogInfo.reduce((acc, curr) => {
+//     // functionality here
+//     let name = curr[0]
+//     let price = curr[2]
+//     if (acc.hasOwnProperty(name)) {
+//       acc[name] += price
+//     } else {
+//       acc = { ...acc, [name]: price }
+//     }
+//     console.log('acc', acc)
+//     return acc
+//   }, {})
+//   // find all occurrences of dog
+//   // tally the price for all
+//   // put info into dog object
+//   // return dog object
+//   return dogInfo
+// }
 
 dogCost([
   ['spot', 'collar', 10],
