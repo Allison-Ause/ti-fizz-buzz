@@ -60,6 +60,7 @@ function dogCost(dogInfo) {
       // this should add the prices
       acc[dog] += curr[2]
     } else {
+      console.log('[dog]', [dog])
       // in order to make the key the value of the var, you must bracket
       acc = { ...acc, [dog]: curr[2] }
       console.log('acc in else', acc)
@@ -72,6 +73,8 @@ function dogCost(dogInfo) {
   console.log('dogsObject', dogsObject)
   return dogsObject
 }
+
+dogCost(dogInfo)
 
 // SOLUTION WORKED WITH JBJ
 
