@@ -113,14 +113,22 @@ function dogCost(dogInfo) {
 //Output:
 //'atheM nayR'
 
-function reverseString(string) {
-  let solution = []
-  const chars = string.split('')
-  for (let i = 0; i < chars.length; i++) {
-    solution.unshift(chars[i])
-  }
-  console.log('solution', solution.join(''))
-  return solution.join('')
-}
+// function reverseString(string) {
+//   let solution = []
+//   const chars = string.split('')
+//   for (let i = 0; i < chars.length; i++) {
+//     solution.unshift(chars[i])
+//   }
+//   console.log('solution', solution.join(''))
+//   return solution.join('')
+// }
 
+function reverseString(string) {
+  let solution = ''
+  for (let i = string.length - 1; i >= 0; i--) {
+    solution += string[i]
+    console.log(solution)
+  }
+  return solution
+}
 reverseString('Ryan Mehta')
