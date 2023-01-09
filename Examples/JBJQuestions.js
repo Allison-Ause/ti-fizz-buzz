@@ -34,8 +34,6 @@ function orderedByAisle(groceries) {
   return aisleObject
 }
 
-orderedByAisle(groceries)
-
 // DOG QUESTION:
 
 //Input
@@ -110,7 +108,19 @@ function dogCost(dogInfo) {
 // REVERSE STRING QUESTION:
 
 //Input:
-// const array = "Ryan Mehta";
+// const string = "Ryan Mehta";
 
 //Output:
 //'atheM nayR'
+
+function reverseString(string) {
+  let solution = []
+  const chars = string.split('')
+  for (let i = 0; i < chars.length; i++) {
+    solution.unshift(chars[i])
+  }
+  console.log('solution', solution.join(''))
+  return solution.join('')
+}
+
+reverseString('Ryan Mehta')
