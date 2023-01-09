@@ -1,14 +1,14 @@
-// Groceries:
-//Input:
-// const groceries = [
-//   ["toothbrush", "5", 5],
-//   ["cookies", "2", 2],
-//   ["soap", "5", 1],
-//   ["avocado", "3", 2],
-//   ["tomato", "3", 1]
-// ];
+// GROCERIES QUESTION:
 
-//Output:
+// Input:
+const groceries = [
+  ['toothbrush', '5', 5],
+  ['cookies', '2', 2],
+  ['soap', '5', 1],
+  ['avocado', '3', 2],
+  ['tomato', '3', 1],
+]
+
 // {
 //   '5': ['toothbrush', 'soap'],
 //   '3': ['avocado', 'tomato'],
@@ -16,8 +16,31 @@
 // }
 
 // aisle is key, list of items are the value
+// key = [1]
 
-//Pet stuff
+function orderedByAisle(groceries) {
+  const aisleObject = groceries.reduce((acc, curr) => {
+    const aisle = curr[1]
+    // check acc for curr[1]
+    if (acc.hasOwnProperty(aisle)) {
+      const addItem = acc.aisle.push(curr[1])
+      console.log('addedItem', addItem)
+    } else {
+      acc = { ...acc, [aisle]: [curr[1]] }
+      console.log('acc in else', acc)
+    }
+    return acc
+    // if yes, add curr[0] & ignore price
+    // if no, add curr[1] and curr[0]
+  }, {})
+  console.log('aisleObject', aisleObject)
+  return aisleObject
+}
+
+orderedByAisle(groceries)
+
+// DOG QUESTION:
+
 //Input
 const dogInfo = [
   ['spot', 'collar', 10],
@@ -54,6 +77,8 @@ function dogCost(dogInfo) {
   console.log('dogsObject', dogsObject)
   return dogsObject
 }
+
+// SOLUTION WORKED WITH JBJ
 
 // function dogCost(dogInfo) {
 //   // return an object
@@ -93,6 +118,8 @@ dogCost([
 //   "Ryan Mehta": 60,
 //   "Rosie": 500
 // }
+
+// REVERSE STRING QUESTION:
 
 //Input:
 // const array = "Ryan Mehta";
