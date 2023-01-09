@@ -23,17 +23,14 @@ function orderedByAisle(groceries) {
     const aisle = curr[1]
     // check acc for curr[1]
     if (acc.hasOwnProperty(aisle)) {
-      const addItem = acc.aisle.push(curr[1])
-      console.log('addedItem', addItem)
+      // if yes, add curr[0] & ignore price
+      const addItem = acc[aisle].push(curr[0])
     } else {
-      acc = { ...acc, [aisle]: [curr[1]] }
-      console.log('acc in else', acc)
+      // if no, add curr[1] and curr[0]
+      acc = { ...acc, [aisle]: [curr[0]] }
     }
     return acc
-    // if yes, add curr[0] & ignore price
-    // if no, add curr[1] and curr[0]
   }, {})
-  console.log('aisleObject', aisleObject)
   return aisleObject
 }
 
@@ -100,15 +97,6 @@ function dogCost(dogInfo) {
 //   // return dog object
 //   return dogInfo
 // }
-
-dogCost([
-  ['spot', 'collar', 10],
-  ['Ryan Mehta', 'water bottle', 25],
-  ['spot', 'leash', 30],
-  ['Rosey', 'lounging couch', 500],
-  ['spot', 'treats', 3],
-  ['Ryan Mehta', 'laptop charger', 35],
-])
 
 // returns an object containing the total price of that dog
 
