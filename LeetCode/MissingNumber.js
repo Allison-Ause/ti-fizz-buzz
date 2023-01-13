@@ -20,7 +20,7 @@
 var missingNumber = function (nums) {
   const n = nums.length
   const sorted = nums.sort((a, b) => a - b)
-  if (sorted[0] !== 0) return 0
+  // if (sorted[0] !== 0) return 0 THIS LINE IS ALREADY COVERED IN THE FOR LOOP
   if (sorted[sorted.length - 1] !== n) return n
 
   for (let i = 0; i < nums.length; i++) {
@@ -31,3 +31,5 @@ var missingNumber = function (nums) {
   // sort then check if i+1 = nums[i] + 1
   // return missing number
 }
+
+// const missingNumber = nums => nums.reduce((a, c, i) => a + i + 1 - c, 0)
