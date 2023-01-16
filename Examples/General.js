@@ -8,15 +8,15 @@ const crystal = {
 
 function checkCrystal(crystal) {
   for (let key in crystal) {
-    console.log('key', key)
-    console.log('crystal', crystal[key])
+    console.log('key check:', key)
+    console.log('crystal check:', crystal[key])
   }
   return
 }
 
 function addToObject(arr, obj) {
   const key = arr[0]
-  console.log('key', key)
+  console.log('key:', key)
   newObj = { ...obj, [key]: arr[1] }
   delete newObj.origin
   newObj.name = 'Malachite'
@@ -24,5 +24,5 @@ function addToObject(arr, obj) {
   return newObj
 }
 
-// checkCrystal(crystal)
+checkCrystal(crystal)
 addToObject(['color', 'Silver'], crystal)
