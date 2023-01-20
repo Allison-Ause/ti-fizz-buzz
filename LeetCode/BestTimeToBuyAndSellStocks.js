@@ -45,13 +45,31 @@ var maxProfit = function (prices) {
       if (maxProfit < currentProfit) {
         maxProfit = currentProfit
       }
-      // maxProfit = Math.max(maxProfit, currentProfit)
     } else {
       leftI = rightI
     }
     rightI++
   }
   return maxProfit
+}
+
+/// SHAN SOLUTION INCLUDING EDGE CASE CONDITIONAL
+
+var maxProfit = function (prices) {
+  if (prices.length <= 1) return 0
+  let buyPrice = prices[0]
+  let profit = 0
+
+  for (let i = 0; i < prices.length; i++) {
+    // reset the value of buyPrice if it's less than initialized value at index 0
+    buyPrice = Math.min(buyPrice, prices[i])
+    // reset the value of profit if current index - buyPrice is positive
+    if (prices[i] - buyPrice > profit) {
+      profit = prices[i] - buyPrice
+    }
+  }
+  // return whatever positive value remains
+  return profit
 }
 
 // DOING THE SAME THING WITH NESTED LOOPS INSTEAD OF TWO POINTERS TIMES OUT
