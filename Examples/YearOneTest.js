@@ -28,60 +28,48 @@
 // T2 hat,glasses, company1_hat,company1_glasses,company2_hat
 // T3 shoe,shirt,belt,pant, AstroCorp_shoe,BetaCorp_hat,CaliCorp_pant,AstroCorp_shirt,DeltaCorp_pant,BetaCorp_shirt,AstroCorp_belt,DeltaCorp_shoe,BetaCorp_belt,BetaCorp_shoe,CaliCorp_shirt,CaliCorp_shoe,AstroCorp_hat,CaliCorp_belt,CaliCorp_jacket,DeltaCorp_belt,DeltaCorp_pant,AstroCorp_pant,DeltaCorp_lanyard,DeltaCorp_shirt
 
-// exports.solution = function (uniformSet, uniformPieces) {
-//   // Please write your code here.
-//   let hashmap = {}
-//   uniformPieces.map((str) => {
-//     const strArr = str.split('_')
-//     console.log('splitStrings:', strArr)
-//     if (hashmap[strArr[0]]) {
-//       hashmap[strArr[0]] = [...hashmap[strArr[0]], strArr[1]]
-//     } else {
-//       [hashmap[strArr[0]]] = strArr[1]
-//     }
-//   })
-//   console.log('hashmap:', hashmap)
-
-//   for (let i = 0; i < uniformSet.length; i++) {
-//     console.log('hashmap[i]:', hashmap.i)
-//     console.log('hashmapkey:', [hashmap[i]])
-//     const found = hashmap[i].find((item) => item === uniformSet[i])
-//     if (!found) return [hashmap[i]]
-//   }
-// }
-
 function clothes(uniformSet, uniformPieces) {
-  let hashmap = new Map()
-  const splitStrings = uniformPieces.forEach((str) => {
+  // object.keys (find length)
+  // conditional to only add if it matches the uniformSet
+  let hashmap = {}
+  uniformPieces.forEach((str) => {
     // split each string into a subarray of the company and the item
     const strArr = str.split('_')
-    // if the company has already been stored, add the item to the value array
-    if (hashmap.has(strArr[0])) {
-      const copy = [...hashmap.get(strArr[0])]
-      // copy works because we're using primitive values
-      // (can't copy arrays or objects because they stay in memory)
-      copy.push(strArr[1])
-      hashmap.set(strArr[0], copy)
+    console.log('strArr:', strArr)
+    const filtered = uniformSet.filter((item) => item === strArr[1])
+    console.log('filtered:', filtered)
+    // if the company has already been stored AND the filtered item matches something in the set, add item
+    if (hashmap.hasOwnProperty(strArr[0]) && filtered.length > 0) {
+      hashmap[strArr[0]] = { ...hashmap[strArr[0]], [strArr[1]]: 'x' }
     } else {
-      // if the company has not been stored, add the company and the initial value
-      hashmap.set(strArr[0], [strArr[1]])
+      if (filtered.length > 0) {
+        hashmap[strArr[0]] = { [strArr[1]]: 'x' }
+      }
     }
   })
-  console.log('splitStrings:')
-  console.log('hashmap:', hashmap)
-  // loop to compare uniformSet and hashmap
-  // if uniformSet.length === hashmap value length
-  return splitStrings
+  // check object for key with smaller nested object
+  // return [hashmap[company]]
+  const keys = Object.keys(hashmap)
+  const values = Object.values(hashmap)
+  console.log('keys:', values)
+  for (let i = 0; i < values.length; i++) {
+    const valuesCount = Object.values(values[i]).length
+    console.log('valuesCount:', valuesCount)
+    console.log(valuesCount < uniformSet.length)
+    if (valuesCount < uniformSet.length) {
+      console.log('i:', i)
+      console.log('keys[i]:', keys[i])
 
-  // { companyName: { 'shoe': 1, 'pants': 2, }}
-  // companyName[shoe] ?
-  // O^1
+      return keys[i]
+    }
+  }
+  return console.log('No companies are missing pieces')
 }
 
 // return string of company name that is missing items.
 // if company has all items, return "N/A"
 
-const uniformSet = ['shoe', 'shirt']
+const uniformSet = ['shoe', 'shirt', 'pant']
 const uniformPieces = [
   'AstroCorp_shoe',
   'BetaCorp_hat',
@@ -105,3 +93,33 @@ const uniformPieces = [
   'DeltaCorp_shirt',
 ]
 clothes(uniformSet, uniformPieces)
+
+// ----- HASHMAP VERSION (NOT COMPLETE) --------
+
+// function clothes(uniformSet, uniformPieces) {
+//   let hashmap = new Map()
+//   const splitStrings = uniformPieces.forEach((str) => {
+//     // split each string into a subarray of the company and the item
+//     const strArr = str.split('_')
+//     // if the company has already been stored, add the item to the value array
+//     if (hashmap.has(strArr[0])) {
+//       const copy = [...hashmap.get(strArr[0])]
+//       // copy works because we're using primitive values
+//       // (can't copy arrays or objects because they stay in memory)
+//       copy.push(strArr[1])
+//       hashmap.set(strArr[0], copy)
+//     } else {
+//       // if the company has not been stored, add the company and the initial value
+//       hashmap.set(strArr[0], [strArr[1]])
+//     }
+//   })
+//   console.log('splitStrings:')
+//   console.log('hashmap:', hashmap)
+//   // loop to compare uniformSet and hashmap
+//   // if uniformSet.length === hashmap value length
+//   return splitStrings
+
+//   // { companyName: { 'shoe': 1, 'pants': 2, }}
+//   // companyName[shoe] ?
+//   // O^1
+// }
