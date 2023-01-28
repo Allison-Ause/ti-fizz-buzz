@@ -35,9 +35,7 @@ function clothes(uniformSet, uniformPieces) {
   uniformPieces.forEach((str) => {
     // split each string into a subarray of the company and the item
     const strArr = str.split('_')
-    console.log('strArr:', strArr)
     const filtered = uniformSet.filter((item) => item === strArr[1])
-    console.log('filtered:', filtered)
     // if the company has already been stored AND the filtered item matches something in the set, add item
     if (hashmap.hasOwnProperty(strArr[0]) && filtered.length > 0) {
       hashmap[strArr[0]] = { ...hashmap[strArr[0]], [strArr[1]]: 'x' }
@@ -47,19 +45,16 @@ function clothes(uniformSet, uniformPieces) {
       }
     }
   })
-  // check object for key with smaller nested object
-  // return [hashmap[company]]
-  const keys = Object.keys(hashmap)
-  const values = Object.values(hashmap)
-  console.log('keys:', values)
-  for (let i = 0; i < values.length; i++) {
-    const valuesCount = Object.values(values[i]).length
-    console.log('valuesCount:', valuesCount)
-    console.log(valuesCount < uniformSet.length)
-    if (valuesCount < uniformSet.length) {
-      console.log('i:', i)
-      console.log('keys[i]:', keys[i])
 
+  const keys = Object.keys(hashmap)
+
+  for (let i = 0; i < keys.length; i++) {
+    // console.log('hashmap:', hashmap)
+    // console.log('hashmap[keys[i]]:', hashmap[keys[i]])
+    const valuesCount = Object.values(hashmap[keys[i]]).length
+    // console.log(valuesCount < uniformSet.length)
+    if (valuesCount < uniformSet.length) {
+      // console.log('keys[i]:', keys[i])
       return keys[i]
     }
   }
@@ -93,6 +88,43 @@ const uniformPieces = [
   'DeltaCorp_shirt',
 ]
 clothes(uniformSet, uniformPieces)
+
+// --- CLUNKY BUT COMPLETE OBJECT VERSION -----
+
+// function clothes(uniformSet, uniformPieces) {
+//   // object.keys (find length)
+//   // conditional to only add if it matches the uniformSet
+//   let hashmap = {}
+//   uniformPieces.forEach((str) => {
+//     // split each string into a subarray of the company and the item
+//     const strArr = str.split('_')
+//     const filtered = uniformSet.filter((item) => item === strArr[1])
+//     // if the company has already been stored AND the filtered item matches something in the set, add item
+//     if (hashmap.hasOwnProperty(strArr[0]) && filtered.length > 0) {
+//       hashmap[strArr[0]] = { ...hashmap[strArr[0]], [strArr[1]]: 'x' }
+//     } else {
+//       if (filtered.length > 0) {
+//         hashmap[strArr[0]] = { [strArr[1]]: 'x' }
+//       }
+//     }
+//   })
+//   // check object for key with smaller nested object
+//   // return [hashmap[company]]
+//   const keys = Object.keys(hashmap)
+//   const values = Object.values(hashmap)
+//   console.log('values:', values)
+//   for (let i = 0; i < values.length; i++) {
+//     console.log('hashmap:', hashmap)
+//     console.log('hashmap[i]:', hashmap[i])
+//     const valuesCount = Object.values(values[i]).length
+//     console.log(valuesCount < uniformSet.length)
+//     if (valuesCount < uniformSet.length) {
+//       console.log('keys[i]:', keys[i])
+//       return keys[i]
+//     }
+//   }
+//   return console.log('No companies are missing pieces')
+// }
 
 // ----- HASHMAP VERSION (NOT COMPLETE) --------
 
