@@ -17,10 +17,27 @@
 // 62 + 82 = 100
 // 12 + 02 + 02 = 1
 
-/**
- * @param {number} n
- * @return {boolean}
- */
+var runSquare = function (digits) {
+  return digits
+    .toString()
+    .split('')
+    .reduce((acc, curr) => acc + Math.pow(Number(curr), 2), 0)
+}
+
+var isHappy = function (n) {
+  const set = new Set()
+
+  while (n !== 1) {
+    n = runSquare(n)
+    if (set.has(n)) {
+      return false
+    } else {
+      set.add(n)
+      runSquare(n)
+    }
+  }
+  return true
+}
 
 // positiveInt = split into single digits, square them, add them
 // repeat until positiveInt = 1
