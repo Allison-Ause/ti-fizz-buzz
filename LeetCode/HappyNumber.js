@@ -17,6 +17,7 @@
 // 62 + 82 = 100
 // 12 + 02 + 02 = 1
 
+// RUNTIME 67ms (85.5%) MEMORY 44.1mb (41.86%)
 var runSquare = function (digits) {
   return digits
     .toString()
