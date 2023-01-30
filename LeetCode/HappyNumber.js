@@ -27,6 +27,7 @@
 // loops endlessly = false
 // n is 1 = true
 
+// RECURSIVE VERSION NOT WORKING; RESETTING VALUES TO ZERO IS PROBLEM
 // var isHappy = function(n) {
 //   let result = 0
 //   const set = new Set()
@@ -47,4 +48,28 @@
 //       console.log('entering else')
 //       isHappy(result)
 //   }
+// };
+
+// SECONDARY FUNCTION VERSION
+// var runSquare = function (digits) {
+//     console.log('digits in micro:', digits)
+//     let result = 0
+//     for(let i = 0; i < digits.length; i++) {
+//         result += Math.pow(digits[i], 2)
+//         console.log('result in micro:', result)
+//     }
+//     return result
+// }
+
+// var isHappy = function(n) {
+//     let digits = n.toString().split('')
+//     let result = runSquare(digits)
+//         if(result == 1) {
+//             return true
+//     } else {
+//         digits = result.toString().split('')
+//         console.log('digits in else:', digits)
+//         runSquare(digits)
+//     }
+//     return false
 // };
