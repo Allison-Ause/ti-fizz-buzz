@@ -40,3 +40,27 @@ var twoSum = function (nums, target) {
   }
   return console.log('No solution could be found.')
 }
+
+// TWO POINTER SOLUTION
+// Runtime 78.84% (76ms)
+// Memory 11.71% (44.3mb)
+
+// var twoSum = function(nums, target) {
+//   const sorted = nums.slice()
+//   sorted.sort((a, b) => a - b)
+//   let sum = 0
+//   let left = 0
+//   let right = sorted.length - 1
+//   while (left < right) {
+//               sum = sorted[left] + sorted[right]
+//       if (sum === target) {
+//           return [nums.indexOf(sorted[left]), nums.lastIndexOf(sorted[right])]
+//       }
+
+//       if (sum > target) {
+//           right--
+//       } else if (sum < target) {
+//           left++
+//       }
+//   }
+// };

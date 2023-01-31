@@ -61,6 +61,11 @@ function clothes(uniformSet, uniformPieces) {
   return console.log('No companies are missing pieces')
 }
 
+// test case
+// hat,glasses, company1_hat,company1_glasses,company2_hat
+
+// shoe,shirt,belt,pant, AstroCorp_shoe,BetaCorp_hat,CaliCorp_pant,AstroCorp_shirt,DeltaCorp_pant,BetaCorp_shirt,AstroCorp_belt,DeltaCorp_shoe,BetaCorp_belt,BetaCorp_shoe,CaliCorp_shirt,CaliCorp_shoe,AstroCorp_hat,CaliCorp_belt,CaliCorp_jacket,DeltaCorp_belt,DeltaCorp_pant,AstroCorp_pant,DeltaCorp_lanyard,DeltaCorp_shirt
+
 // return string of company name that is missing items.
 // if company has all items, return "N/A"
 
@@ -155,3 +160,25 @@ clothes(uniformSet, uniformPieces)
 //   // companyName[shoe] ?
 //   // O^1
 // }
+
+// REFACTOR BROKEN?
+
+// let hashmap = {}
+// uniformPieces.forEach((str) => {
+//   const strArr = str.split('_')
+//   const filtered = uniformSet.filter((item) => item === strArr[1])
+//   if (filtered.length > 0) {
+//     hashmap.hasOwnProperty(strArr[0]) ? hashmap[strArr[0]] = { ...hashmap[strArr[0]], [strArr[1]]: 'x'} : hashmap[strArr[0]] = { [strArr[1]]: 'x'}
+//   }
+// })
+
+// const keys = Object.keys(hashmap)
+
+// for (let i = 0; i < keys.length; i++) {
+//   const itemCount = Object.values(hashmap[keys[1]]).length
+//   console.log('itemCount:', itemCount)
+//   if (itemCount < uniformSet.length) {
+//     return keys[i]
+//   }
+// }
+// return 'N/A'
