@@ -27,10 +27,10 @@ var singleNumber = function (nums) {
 // RUNTIME 74ms (75.4%)
 // MEMORY 44.7mb (60.47%)
 
-var singleNumber = function (nums) {
-  let xor = 0
-  for (const n of nums) {
-    xor ^= n
-  }
-  return xor
-}
+// var singleNumber = function (nums) {
+//   let xor = 0
+//   for (const n of nums) {
+//     xor ^= n
+//   }
+//   return xor
+// }
