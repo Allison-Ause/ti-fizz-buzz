@@ -32,6 +32,32 @@ var canConstruct = function (ransomNote, magazine) {
   return true
 }
 
+// SOLUTION USING MICROFUNCTION AND CROSS MAP COMPARISON (VERY GOOD!)
+// RUNTIME 84ms (82.81%)
+// MEMORY 44.1mb (81.41%)
+
+function characterFrequencies(s) {
+  const frequencies = new Map()
+
+  for (const char of s) {
+    frequencies.set(char, (frequencies.get(char) ?? 0) + 1)
+  }
+
+  return frequencies
+}
+
+function canConstruct(ransomNote, magazine) {
+  const noteFrequencies = characterFrequencies(ransomNote)
+  const magazineFrequencies = characterFrequencies(magazine)
+
+  for (const [char, count] of noteFrequencies) {
+    if (count > (magazineFrequencies.get(char) ?? 0)) {
+      return false
+    }
+  }
+  return true
+}
+
 // RESTRUCTURED SYNTAX WITH FOR/OF LOOP TO POPULATE MAP.
 // LESS PERFORMANT
 
