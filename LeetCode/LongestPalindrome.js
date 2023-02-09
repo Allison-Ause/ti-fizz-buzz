@@ -39,3 +39,53 @@ var longestPalindrome = function (s) {
   // conditional logic for an all even setup
   return hasOdd ? palindromeLength + 1 : palindromeLength
 }
+
+// USING OBJECTS AND COUNTING PAIRS
+// RUNTIME 70ms (72.48%)
+// MEMORY 44.4mb (24.8%)
+
+// var longestPalindrome = function(s) {
+//   if (s.length === 1) return 1
+
+//   // create the counts
+//   const counts = {}
+//   for (const letter of s) {
+//       if (counts.hasOwnProperty(letter)) {
+//           counts[letter]++
+//       } else {
+//           counts[letter] = 1
+//       }
+//   }
+//   // add each pair to the length count
+//   // if the count is less than the length, you have an odd and must add one
+//   let pairs = 0
+//   for (const tally of Object.values(counts)) {
+//       pairs += Math.floor(tally / 2)
+//   }
+//   const length = pairs * 2
+//   return length < s.length ? length + 1 : length
+// };
+
+// SET SOLUTION
+// RUNTIME 234ms (5.37%)
+// MEMORY 50.3mb (5.41%)
+
+// var longestPalindrome = function(s) {
+//   if (s.length === 1) return 1
+
+//   // create new storage set
+//   const set = new Set()
+//   let count = 0
+//   // add to set, remove as pairs
+//   for (let i = 0; i < s.length; i++) {
+//       if (set.has(s[i])) {
+//           count += 2
+//           set.delete(s[i])
+//           console.log('set:', set)
+//       } else {
+//           set.add(s[i])
+//       }
+//   }
+//   // if only pairs, no need to add; if there's a loner, add 1 to count
+//   return set.size === 0 ? count : count + 1
+// };
