@@ -12,52 +12,30 @@
 // Output: 7
 // Explanation: One longest palindrome that can be built is "dccaccd", whose length is 7.
 
+// HASHMAP WITH ODD LOGIC
+// RUNTIME 70ms (72.48%)
+// MEMORY 42.6mb (86.42%)
 var longestPalindrome = function (s) {
-  if (s.length === 1) return s.length
+  if (s.length === 1) return 1
   const hashmap = new Map()
-  // don't have to split string to iterate over
-  const letters = s.split('')
-  for (let i = 0; i < letters.length; i++) {
-    hashmap.set(letters[i], hashmap.get(letters[i]) + 1 || 1)
+
+  for (let i = 0; i < s.length; i++) {
+    hashmap.set(s[i], (hashmap.get(s[i]) || 0) + 1)
   }
-  let palindromeLength = 0
-  const mapIter = hashmap.entries()
-  console.log('mapIter:', mapIter)
 
   // sum all even numbers
   // if number is odd, add all but one
   // add one for center pivot
+  let palindromeLength = 0
+  let hasOdd = false
   for (key of hashmap.keys()) {
-    if (hashmap.get(key) % 2) {
+    if (hashmap.get(key) % 2 === 0) {
       palindromeLength += hashmap.get(key)
-      console.log('palindromeLength:', palindromeLength)
-    } else if (hashmap.get(key) > 1) {
+    } else if (hashmap.get(key) != 0) {
       palindromeLength += hashmap.get(key) - 1
-      console.log('palindromeLength:', palindromeLength)
+      hasOdd = true
     }
   }
   // conditional logic for an all even setup
-  return palindromeLength + 1
+  return hasOdd ? palindromeLength + 1 : palindromeLength
 }
-
-// var longestPalindrome = function(s) {
-//   if (s.length === 1) return s.length
-//   const hashmap = new Map()
-//   const letters = s.split('')
-//   for (let i = 0; i < letters.length; i++) {
-//       hashmap.set(letters[i], hashmap.get(letters[i]) + 1 || 1)
-//   }
-//   let palindromeLength = 0
-//   for (key in hashmap) {
-//       if (hashmap.get(key) % 2) {
-//           palindromeLength += hashmap.get(key)
-//           console.log('palindromeLength:', palindromeLength)
-//       } else if (hashmap.get(key) > 1) {
-//           palindromeLength += hashmap.get(key) - 1
-//           console.log('palindromeLength:', palindromeLength)
-//       }
-//   }
-//   return palindromeLength
-//   // sum all even numbers, add highest odd?
-//   // if number is odd, add all but one
-// };
