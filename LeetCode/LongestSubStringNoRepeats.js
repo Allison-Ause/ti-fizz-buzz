@@ -8,6 +8,29 @@
 // Output: 3
 // Explanation: The answer is "abc", with the length of 3.
 
+// USING SET AND POINTERS
+// RUNTIME 72ms (98.53%)
+// MEMORY 46.5mb (80.62%)
+
+var lengthOfLongestSubstring = function (s) {
+  let set = new Set()
+  let left = 0
+  let maxSize = 0
+
+  if (s.length === 0) return 0
+  if (s.length === 1) return 1
+
+  for (let i = 0; i < s.length; i++) {
+    while (set.has(s[i])) {
+      set.delete(s[left])
+      left++
+    }
+    set.add(s[i])
+    maxSize = Math.max(maxSize, i - left + 1)
+  }
+  return maxSize
+}
+
 // FIRST ATTEMPT WITH NESTED LOGIC; DIDN'T PASS 'au' TESTS
 
 // var lengthOfLongestSubstring = function(s) {
