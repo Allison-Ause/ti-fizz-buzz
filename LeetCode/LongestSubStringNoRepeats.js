@@ -31,6 +31,9 @@ var lengthOfLongestSubstring = function (s) {
   return maxSize
 }
 
+// GOOD LINK FOR A SLIDING WINDOW SOLUTION
+// https://leetcode.com/problems/longest-substring-without-repeating-characters/solutions/2694302/js-98-sliding-window-with-exlanation/
+
 // FIRST ATTEMPT WITH NESTED LOGIC; DIDN'T PASS 'au' TESTS
 
 // var lengthOfLongestSubstring = function(s) {
