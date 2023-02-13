@@ -14,23 +14,30 @@ function instance(array) {
     }
     return acc
   }, [])
-  console.log('return arr:', instanceArr)
   return instanceArr
 }
 
 function howMany(array) {
+  // add edge case for zero or one
   const newArr = []
   for (let i = 0; i < array.length; i++) {
     if (!newArr.find((x) => x === array[i])) {
       newArr.push(array[i])
     }
-    // if (!newArr.includes(array[i])) {
-    //   newArr.push(array[i])
-    // }
   }
-  console.log('newArr:', newArr)
   return newArr
+}
+
+function setVersion(array) {
+  const set = new Set()
+  // add to set
+  for (let i = 0; i < array.length; i++) {
+    set.add(array[i])
+  }
+  const returnArr = [...set]
+  return returnArr
 }
 
 instance(inputArray)
 howMany(inputArray)
+setVersion(inputArray)
