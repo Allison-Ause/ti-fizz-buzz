@@ -47,8 +47,8 @@ function orderPartDeux(groceries) {
   console.log('finished obj:', aisleObject)
   return aisleObject
 }
-orderPartDeux(groceries)
-// orderByAisle(groceries)
+// orderPartDeux(groceries)
+orderByAisle(groceries)
 
 // {
 //   '5': ['toothbrush', 'soap'],
