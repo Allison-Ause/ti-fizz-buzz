@@ -9,6 +9,47 @@ const groceries = [
   ['tomato', '3', 1],
 ]
 
+function orderByAisle(groceries) {
+  // return object with string aisle as key and subarray of items
+  let aisleObject = groceries.reduce((acc, curr) => {
+    // if object has aisle already saved, add curr[0] to subarray
+    const aisle = curr[1]
+    const item = curr[0]
+    console.log('acc:', acc)
+    if (acc.hasOwnProperty(aisle)) {
+      // acc = { ...acc, [aisle]: [...acc[aisle], item] }
+      acc[aisle].push(item)
+      console.log('acc in If:', acc)
+    } else {
+      acc = { ...acc, [aisle]: [item] }
+      console.log('acc in Else:', acc)
+    }
+    return acc
+    // if not, add curr[1] & array to object
+  }, {})
+  console.log('aisleObject finished:', aisleObject)
+  return aisleObject
+}
+
+function orderPartDeux(groceries) {
+  let aisleObject = {}
+  for (let subarray of groceries) {
+    if (aisleObject.hasOwnProperty(subarray[1])) {
+      const object = aisleObject[subarray[1]].push(subarray[0])
+      console.log('object:', object)
+      // add item to aisle subarray
+    } else {
+      // add aisle and item
+      aisleObject = { ...aisleObject, [subarray[1]]: [subarray[0]] }
+      console.log('aisleObj in Else:', aisleObject)
+    }
+  }
+  console.log('finished obj:', aisleObject)
+  return aisleObject
+}
+orderPartDeux(groceries)
+// orderByAisle(groceries)
+
 // {
 //   '5': ['toothbrush', 'soap'],
 //   '3': ['avocado', 'tomato'],
@@ -18,24 +59,57 @@ const groceries = [
 // aisle is key, list of items are the value
 // key = [1]
 
-function orderedByAisle(groceries) {
-  const aisleObject = groceries.reduce((acc, curr) => {
-    const aisle = curr[1]
-    // check acc for curr[1]
-    if (acc.hasOwnProperty(aisle)) {
-      // if yes, add curr[0] & ignore price
-      const addItem = acc[aisle].push(curr[0])
-    } else {
-      // if no, add curr[1] and curr[0]
-      acc = { ...acc, [aisle]: [curr[0]] }
-    }
-    return acc
-  }, {})
-  return aisleObject
-}
+// function orderedByAisle(groceries) {
+//   const aisleObject = groceries.reduce((acc, curr) => {
+//     const aisle = curr[1]
+//     // check acc for curr[1]
+//     if (acc.hasOwnProperty(aisle)) {
+//       // if yes, add curr[0] & ignore price
+//       const addItem = acc[aisle].push(curr[0])
+//     } else {
+//       // if no, add curr[1] and curr[0]
+//       acc = { ...acc, [aisle]: [curr[0]] }
+//     }
+//     return acc
+//   }, {})
+//   return aisleObject
+// }
 
 // DOG QUESTION:
 
+// return object with single dogs and their cumulative prices
+
+// function dogCost(dogInfo) {
+//   const dogsObject = dogInfo.reduce((acc, curr) => {
+//     const dog = curr[0]
+//     console.log('curr dog', dog)
+//     // check for dog's existence in acc
+//     console.log('exists in list?', acc.hasOwnProperty(dog))
+//     if (acc.hasOwnProperty(dog)) {
+//       // if exists, add acc price to curr price
+//       console.log('acc[dog]', acc[dog])
+//       // this should add the prices
+//       acc[dog] += curr[2]
+//     } else {
+//       console.log('[dog]', [dog])
+//       // in order to make the key the value of the var, you must bracket
+//       acc = { ...acc, [dog]: curr[2] }
+//       console.log('acc in else', acc)
+//     }
+
+//     // if not, add dog and price
+
+//     return acc
+//   }, {})
+//   console.log('dogsObject', dogsObject)
+//   return dogsObject
+// }
+
+// SOLUTION WORKED WITH JBJ
+// find all occurrences of dog
+// tally the price for all
+// put info into dog object
+// return dog object
 //Input
 const dogInfo = [
   ['spot', 'collar', 10],
@@ -46,58 +120,24 @@ const dogInfo = [
   ['Ryan Mehta', 'laptop charger', 35],
 ]
 
-// return object with single dogs and their cumulative prices
-
 function dogCost(dogInfo) {
-  const dogsObject = dogInfo.reduce((acc, curr) => {
-    const dog = curr[0]
-    console.log('curr dog', dog)
-    // check for dog's existence in acc
-    console.log('exists in list?', acc.hasOwnProperty(dog))
-    if (acc.hasOwnProperty(dog)) {
-      // if exists, add acc price to curr price
-      console.log('acc[dog]', acc[dog])
-      // this should add the prices
-      acc[dog] += curr[2]
+  // return an object
+  dogInfo.reduce((acc, curr) => {
+    let name = curr[0]
+    let price = curr[2]
+    if (acc.hasOwnProperty(name)) {
+      acc[name] += price
     } else {
-      console.log('[dog]', [dog])
-      // in order to make the key the value of the var, you must bracket
-      acc = { ...acc, [dog]: curr[2] }
-      console.log('acc in else', acc)
+      acc = { ...acc, [name]: price }
     }
-
-    // if not, add dog and price
-
+    console.log('acc', acc)
     return acc
   }, {})
-  console.log('dogsObject', dogsObject)
-  return dogsObject
+  console.log('dogInfo:', dogInfo)
+  return dogInfo
 }
 
-dogCost(dogInfo)
-
-// SOLUTION WORKED WITH JBJ
-
-// function dogCost(dogInfo) {
-//   // return an object
-//   dogInfo.reduce((acc, curr) => {
-//     // functionality here
-//     let name = curr[0]
-//     let price = curr[2]
-//     if (acc.hasOwnProperty(name)) {
-//       acc[name] += price
-//     } else {
-//       acc = { ...acc, [name]: price }
-//     }
-//     console.log('acc', acc)
-//     return acc
-//   }, {})
-//   // find all occurrences of dog
-//   // tally the price for all
-//   // put info into dog object
-//   // return dog object
-//   return dogInfo
-// }
+// dogCost(dogInfo)
 
 // returns an object containing the total price of that dog
 
@@ -130,7 +170,6 @@ function reverseString(string) {
   let solution = ''
   for (let i = string.length - 1; i >= 0; i--) {
     solution += string[i]
-    console.log(solution)
   }
   return solution
 }
