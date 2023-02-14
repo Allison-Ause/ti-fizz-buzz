@@ -34,3 +34,42 @@ convertedArray = numbers.map((num) => {
   // if I don't return num, it will read Undefined
 })
 console.log(convertedArray.join(`/n`))
+
+// TWO NEW SOLUTIONS FROM LEETCODE SOLVES
+// WHILE LOOP AND STRINGS
+// RUNTIME 69ms (75.71%)
+// MEMORY 43.9mb (82.48%)
+
+function fizzBuzz(n) {
+  const fizzBuzzed = []
+  let i = 1
+  while (i <= n) {
+    let str = ''
+    if (i % 3 === 0) str += 'Fizz'
+    if (i % 5 === 0) str += 'Buzz'
+    if (str.length === 0) str = i.toString()
+    fizzBuzzed.push(str)
+    i++
+  }
+  return fizzBuzzed
+}
+
+// FOR LOOP WITH IF ELSE
+// RUNTIME 67ms (83.80%)
+// MEMORY 44.2mb (46.12%)
+
+function fizzBuzz(n) {
+  const fizzBuzzed = []
+  for (let i = 1; i <= n; i++) {
+    if (i % 15 === 0) {
+      fizzBuzzed.push('FizzBuzz')
+    } else if (i % 3 === 0) {
+      fizzBuzzed.push('Fizz')
+    } else if (i % 5 === 0) {
+      fizzBuzzed.push('Buzz')
+    } else {
+      fizzBuzzed.push(i.toString())
+    }
+  }
+  return fizzBuzzed
+}
