@@ -27,3 +27,13 @@ function containsDuplicate(nums) {
 }
 
 containsDuplicate([0, 4, 5, 0, 3, 6])
+
+/// Hashmap version that WORKS
+var containsDuplicate = function (nums) {
+  const hashmap = new Map()
+  for (let i = 0; i < nums.length; i++) {
+    hashmap.set(nums[i], (hashmap.get(nums[i]) || 0) + 1)
+    if (hashmap.get(nums[i]) > 1) return true
+  }
+  return false
+}
