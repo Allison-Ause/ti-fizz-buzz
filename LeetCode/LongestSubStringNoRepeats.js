@@ -31,6 +31,10 @@ var lengthOfLongestSubstring = function (s) {
   return maxSize
 }
 
+// SECOND ATTEMPT, ONE MONTH LATER:
+// RUNTIME: 99ms (56%)
+// MEMORY: 46.5mb (80.4%)
+
 // GOOD LINK FOR A SLIDING WINDOW SOLUTION
 // https://leetcode.com/problems/longest-substring-without-repeating-characters/solutions/2694302/js-98-sliding-window-with-exlanation/
 
