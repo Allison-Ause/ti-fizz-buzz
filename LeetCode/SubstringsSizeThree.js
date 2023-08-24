@@ -6,6 +6,11 @@
 
 // A substring is a contiguous sequence of characters in a string.
 
+// FOR SLIDING WINDOW THINK:
+// * - substring -> sliding window
+// * - of sized three -> fixed size
+// * - distinct characters -> set
+
 // WRONG ANSWER, GOT STUCK HERE
 var countGoodSubstrings = function (s) {
   // good string = no duplicate letters
