@@ -28,3 +28,16 @@ var countGoodSubstrings = function (s) {
   }
   return count
 }
+
+// Working using set, creating batches. Wonder if it's faster to add and subtract from initial set?
+var countGoodSubstrings = function (s) {
+  // hashmap?
+  let count = 0
+  for (let i = 0; i < s.length - 2; i++) {
+    // create set from fixed size of three
+    let batch = [s[i], s[i + 1], s[i + 2]]
+    let set = new Set(batch)
+    if (set.size === 3) count++
+  }
+  return count
+}
