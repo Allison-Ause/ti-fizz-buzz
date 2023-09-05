@@ -171,6 +171,7 @@ function reverseString(string) {
   for (let i = string.length - 1; i >= 0; i--) {
     solution += string[i]
   }
+  console.log('solution:', solution);
   return solution
 }
 reverseString('Ryan Mehta')
